@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ASCII" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tents, from Simon Tatham's Portable Puzzle Collection</title>
+<title>Namioty</title>
 <script type="text/javascript" src="tents.js"></script>
 <style class="text/css">
 /* Margins and centring on the top-level div for the game menu */
-#gamemenu { margin-top: 0; margin-bottom: 0.5em; text-align: center }
+/*#gamemenu { margin-top: 0; margin-bottom: 0.5em; text-align: center }*/
 
 /* Inside that div, the main menu bar and every submenu inside it is a <ul> */
 #gamemenu ul {
@@ -17,6 +17,8 @@
     margin: 0;
     margin-bottom: 0.5em;
     padding: 0;
+	height: 50px;
+	
 }
 
 /* Individual menu items are <li> elements within such a <ul> */
@@ -78,7 +80,7 @@
     /* When they are displayed, they are positioned immediately below
      * their parent <li>, and with the left edge aligning */
     position: absolute;
-    top: 100%;
+    top: 30px;
     left: 0;
     /* We must specify an explicit background colour for submenus, because
      * they must be opaque (don't want other page contents showing through
@@ -103,7 +105,7 @@
     /* Override the text-align:center from above */
     text-align: left;
     /* Don't make the text any smaller than the previous level of menu */
-    font-size: 100%;
+    font-size: 20px;
     /* This time it's the top border that we omit on all but the first
      * element in the submenu, since now they're vertically stacked */
     border-left: 1px solid rgba(0,0,0,0.3);
@@ -136,18 +138,59 @@
      * from above. */
     display: block;
 }
+
+table {
+	text-align: center;
+}
+
+table td {
+	width: 68px;
+}
+
+td img {
+	height: 55px;
+}
+
+
+table td { 
+	font-size: 12px;
+}
+
+
+table td:hover{
+	background-color: rgb(179, 179, 179);
+}
+
+table {
+	align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 </head>
 <body onLoad="initPuzzle();">
-<h1 align=center>Tents</h1>
+<h1 align=center>Namioty</h1>
 
 
-
-
-<hr>
 <div id="puzzle" style="display: none">
+
+<table>
+<tbody>
+<tr>
+<td id="new"><img src="img/alpha.png" alt="New game">Nowa gra</td>
+<td id="restart"><img src="img/reload.png" alt="Restart">Od początku</td>
+<td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij ruch</td>
+<td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
+<td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
+</tr>
+</tbody>
+</table>
+
+
 <div id="gamemenu"><ul>
-<li id="new" class="afterseparator">New game</li
+<li id="new" class="afterseparator" style="background-image: 'first.png'" >New game
+
+</li
 ><li id="restart">Restart game</li
 ><li id="undo">Undo move</li
 ><li id="redo">Redo move</li
