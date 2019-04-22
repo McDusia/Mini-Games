@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Namioty</title>
-<script type="text/javascript" src="tents.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ASCII" />
+<title>Inertia, from Simon Tatham's Portable Puzzle Collection</title>
+<script type="text/javascript" src="inertia.js"></script>
 <style class="text/css">
 /* Margins and centring on the top-level div for the game menu */
-/*#gamemenu { margin-top: 0; margin-bottom: 0.5em; text-align: center }*/
+#gamemenu { margin-top: 0; margin-bottom: 0.5em; text-align: center }
 
 /* Inside that div, the main menu bar and every submenu inside it is a <ul> */
 #gamemenu ul {
@@ -17,8 +16,6 @@
     margin: 0;
     margin-bottom: 0.5em;
     padding: 0;
-	height: 50px;
-	
 }
 
 /* Individual menu items are <li> elements within such a <ul> */
@@ -80,7 +77,7 @@
     /* When they are displayed, they are positioned immediately below
      * their parent <li>, and with the left edge aligning */
     position: absolute;
-    top: 30px;
+    top: 100%;
     left: 0;
     /* We must specify an explicit background colour for submenus, because
      * they must be opaque (don't want other page contents showing through
@@ -105,7 +102,7 @@
     /* Override the text-align:center from above */
     text-align: left;
     /* Don't make the text any smaller than the previous level of menu */
-    font-size: 20px;
+    font-size: 100%;
     /* This time it's the top border that we omit on all but the first
      * element in the submenu, since now they're vertically stacked */
     border-left: 1px solid rgba(0,0,0,0.3);
@@ -138,59 +135,26 @@
      * from above. */
     display: block;
 }
-
-table {
-	text-align: center;
-}
-
-table td {
-	width: 68px;
-}
-
-td img {
-	height: 55px;
-}
-
-
-table td { 
-	font-size: 12px;
-}
-
-
-table td:hover{
-	background-color: rgb(179, 179, 179);
-}
-
-table {
-	align: center;
-	margin-left: auto;
-	margin-right: auto;
-}
 </style>
 </head>
 <body onLoad="initPuzzle();">
-<h1 align=center>Namioty</h1>
+<h1 align=center>Inertia</h1>
+
+<h2 align=center>from Simon Tatham's Portable Puzzle Collection</h2>
 
 
+
+<hr>
 <div id="puzzle" style="display: none">
-
-<table>
-<tbody>
-<tr>
-<td id="new"><img src="img/alpha.png" alt="New game">Nowa gra</td>
-<td id="restart"><img src="img/reload.png" alt="Restart">Od początku</td>
-<td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij ruch</td>
-<td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
-<td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
-</tr>
-</tbody>
-</table>
-
-
-<div id="gamemenu"><ul>
-<li id="new" class="afterseparator" style="background-image: 'first.png'" >New game
-
-</li
+<div id="gamemenu"><ul><li>Game...<ul
+><li id="specific">Enter game ID</li
+><li id="random">Enter random seed</li
+><li id="save">Download save file</li
+><li id="load">Upload save file</li
+></ul></li
+><li>Type...<ul id="gametype"></ul></li
+><li class="separator"></li
+><li id="new" class="afterseparator">New game</li
 ><li id="restart">Restart game</li
 ><li id="undo">Undo move</li
 ><li id="redo">Redo move</li
@@ -203,7 +167,11 @@ table {
   <div id="statusbarholder" style="display: block">
   </div>
   </div>
-  
+  <p>
+    Link to this puzzle:
+    <a id="permalink-desc">by game ID</a>
+    <a id="permalink-seed">by random seed</a>
+  </p>
 </div>
 </div>
 <div id="apology">
@@ -214,7 +182,37 @@ doesn't provide a feature that the puzzle code requires (such as
 These puzzles have been successfully run in Firefox 19, Chrome 26,
 Internet Explorer 10 and Safari 6.
 </div>
+<hr>
 
+<p>
+Slide the ball around the grid picking up the gems. Every time the
+ball moves, it will keep sliding until it either hits a wall, or
+stops on a stop square (the broken circles). Try to collect every
+gem without running into any of the mines.
+<p>
+Use the numeric keypad to slide the ball horizontally, vertically or
+diagonally. Alternatively, click on the grid to make the ball move
+towards where you clicked.
+<p>
+If you hit a mine and explode, you can select Undo from the Game
+menu and continue playing; the game will track how many times you
+died.
+
+
+<p align="center">
+<a href="../doc/inertia.html#inertia">Full instructions</a>
+|
+<a href="../">Back to main puzzles page</a>
+
+
+<hr>
+(comments to <a href="mailto:&#97;&#110;&#97;&#107;&#105;&#110;&#64;&#112;&#111;&#98;&#111;&#120;&#46;&#99;&#111;&#109;">&#97;&#110;&#97;&#107;&#105;&#110;&#64;&#112;&#111;&#98;&#111;&#120;&#46;&#99;&#111;&#109;</a>)
+<br>
+(thanks to
+<a href="https://www.chiark.greenend.org.uk/">chiark</a>
+for hosting this page)
+<br>
+(last modified on <!--LASTMOD-->Sat Apr 13 01:47:19 2019<!--END-->)
 
 </body>
 </html>
