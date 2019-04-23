@@ -14,6 +14,7 @@
  * couple of other helper functions.
  */
 
+ var points = 0;
 // To avoid flicker while doing complicated drawing, we use two
 // canvases, the same size. One is actually on the web page, and the
 // other is off-screen. We do all our drawing on the off-screen one
@@ -2364,7 +2365,14 @@ function copyTempDouble(ptr) {
 	var min = Math.floor((ms/1000/60) << 0);
 	var sec = Math.floor((ms/1000) % 60);
 	document.getElementById('timeSummary').innerHTML= min+ "<b>	min </b>"+ sec + "<b> s</b>";
-	//console.log(min + ':' + sec);
+	
+	if(ms < 60000){
+		points = points + 1;
+	} else if(ms > 300000){
+	   points = points + 0.1;
+	} else {
+		points = points + (((-0.00000375) * ms) + 0.999775);  
+	}	
 	modal.style.display = "block"; 
 }
 
