@@ -56,6 +56,8 @@ table {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  text-align: center;
+  max-width: 500px;
 }
 
 /* The Close Button */
@@ -88,7 +90,17 @@ table {
 	<p>Czas:</p>
 	<p id="timeSummary"></p>
   </div>
+</div>
 
+<!-- The Modal -->
+<div id="helpModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="closeButtonInModal" onclick="closeHelpModal()">&times;</span>
+	<p><b>Pomoc</b><p>
+	<p>Rozbij przy każdym drzewie namiot. Pamiętaj aby ilość namiotów w wierszu i w kolumnie była zgodna z liczbą zapisaną przy wierszu/kolumnie. Namioty nie mogą się stykać ani bokami ani rogami.</p>
+  </div>
 </div>
 
 <h1 align=center>Namioty</h1>
@@ -104,7 +116,7 @@ table {
 <td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij</td>
 <td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
 <td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
-<td id="help"><img src="img/help.png" alt="Solve">Pomoc</td>
+<td id="help"><img src="img/help.png" alt="Solve" onclick="displayHelpModal()">Pomoc</td>
 </tr>
 </tbody>
 </table>
