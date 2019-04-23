@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ASCII" />
-<title>Inertia, from Simon Tatham's Portable Puzzle Collection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Bezwładność</title>
 <script type="text/javascript" src="inertia.js"></script>
 <style class="text/css">
 /* Margins and centring on the top-level div for the game menu */
@@ -135,30 +135,122 @@
      * from above. */
     display: block;
 }
+
+table {
+	text-align: center;
+}
+
+table td {
+	width: 45px;
+}
+
+td img {
+	height: 45px;
+}
+
+table td { 
+	font-size: 12px;
+}
+
+
+table td:hover{
+	background-color: rgb(179, 179, 179);
+}
+
+table {
+	align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+  max-width: 500px;
+}
+
+/* The Close Button */
+#closeButtonInModal {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#closeButtonInModal:hover,
+#closeButtonInModal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body onLoad="initPuzzle();">
-<h1 align=center>Inertia</h1>
 
-<h2 align=center>from Simon Tatham's Portable Puzzle Collection</h2>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="closeButtonInModal" onclick="closeModal()">&times;</span>
+	<p>Brawo!<p>
+	<img src="img/emoi.png" alt="happy">
+	<p>Czas:</p>
+	<p id="timeSummary"></p>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="helpModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="closeButtonInModal" onclick="closeHelpModal()">&times;</span>
+	<p><b>Pomoc</b><p>
+	<p>Rozbij przy każdym drzewie namiot. Pamiętaj aby ilość namiotów w wierszu i w kolumnie była zgodna z liczbą zapisaną przy wierszu/kolumnie. Namioty nie mogą się stykać ani bokami ani rogami.</p>
+  </div>
+</div>
+
+<h1 align=center>Bezwładność</h1>
+
+<table>
+<tbody>
+<tr>
+<td id="new"><img src="img/alpha.png" alt="New game">Nowa gra</td>
+<td id="restart"><img src="img/reload.png" alt="Restart">Od początku</td>
+<td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij</td>
+<td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
+<td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
+<td id="help"><img src="img/help.png" alt="Solve" onclick="displayHelpModal()">Pomoc</td>
+</tr>
+</tbody>
+</table>
 
 
-
-<hr>
 <div id="puzzle" style="display: none">
-<div id="gamemenu"><ul><li>Game...<ul
-><li id="specific">Enter game ID</li
-><li id="random">Enter random seed</li
-><li id="save">Download save file</li
-><li id="load">Upload save file</li
-></ul></li
-><li>Type...<ul id="gametype"></ul></li
+<div id="gamemenu"><li>Type...<ul id="gametype"></ul></li
 ><li class="separator"></li
-><li id="new" class="afterseparator">New game</li
-><li id="restart">Restart game</li
-><li id="undo">Undo move</li
-><li id="redo">Redo move</li
-><li id="solve">Solve game</li
 ></ul></div>
 <div align=center>
   <div id="resizable" style="position:relative; left:0; top:0">
@@ -182,37 +274,7 @@ doesn't provide a feature that the puzzle code requires (such as
 These puzzles have been successfully run in Firefox 19, Chrome 26,
 Internet Explorer 10 and Safari 6.
 </div>
-<hr>
 
-<p>
-Slide the ball around the grid picking up the gems. Every time the
-ball moves, it will keep sliding until it either hits a wall, or
-stops on a stop square (the broken circles). Try to collect every
-gem without running into any of the mines.
-<p>
-Use the numeric keypad to slide the ball horizontally, vertically or
-diagonally. Alternatively, click on the grid to make the ball move
-towards where you clicked.
-<p>
-If you hit a mine and explode, you can select Undo from the Game
-menu and continue playing; the game will track how many times you
-died.
-
-
-<p align="center">
-<a href="../doc/inertia.html#inertia">Full instructions</a>
-|
-<a href="../">Back to main puzzles page</a>
-
-
-<hr>
-(comments to <a href="mailto:&#97;&#110;&#97;&#107;&#105;&#110;&#64;&#112;&#111;&#98;&#111;&#120;&#46;&#99;&#111;&#109;">&#97;&#110;&#97;&#107;&#105;&#110;&#64;&#112;&#111;&#98;&#111;&#120;&#46;&#99;&#111;&#109;</a>)
-<br>
-(thanks to
-<a href="https://www.chiark.greenend.org.uk/">chiark</a>
-for hosting this page)
-<br>
-(last modified on <!--LASTMOD-->Sat Apr 13 01:47:19 2019<!--END-->)
 
 </body>
 </html>

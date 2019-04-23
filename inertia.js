@@ -285,17 +285,18 @@ function initPuzzle() {
     command = Module.cwrap('command', 'void', ['number']);
 
     // Event handlers for buttons and things, which call command().
-    document.getElementById("specific").onclick = function(event) {
+    /*document.getElementById("specific").onclick = function(event) {
         // Ensure we don't accidentally process these events when a
         // dialog is actually active, e.g. because the button still
         // has keyboard focus
         if (dlg_dimmer === null)
             command(0);
     };
-    document.getElementById("random").onclick = function(event) {
+	*/
+    /*document.getElementById("random").onclick = function(event) {
         if (dlg_dimmer === null)
             command(1);
-    };
+    };*/
     document.getElementById("new").onclick = function(event) {
         if (dlg_dimmer === null)
             command(5);
@@ -324,7 +325,7 @@ function initPuzzle() {
     free_save_file = Module.cwrap('free_save_file', 'void', ['number']);
     load_game = Module.cwrap('load_game', 'void', ['string', 'number']);
 
-    document.getElementById("save").onclick = function(event) {
+    /*document.getElementById("save").onclick = function(event) {
         if (dlg_dimmer === null) {
             var savefile_ptr = get_save_file();
             var savefile_text = Pointer_stringify(savefile_ptr);
@@ -369,7 +370,7 @@ function initPuzzle() {
                 dialog_cleanup();
             });
         }
-    };
+    };*/
 
     gametypelist = document.getElementById("gametype");
     gametypesubmenus.push(gametypelist);
