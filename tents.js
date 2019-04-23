@@ -298,12 +298,16 @@ function initPuzzle() {
      //       command(1);
     //};
     document.getElementById("new").onclick = function(event) {
-        if (dlg_dimmer === null)
-            command(5);
+        if (dlg_dimmer === null){
+            preloadStartTime = Date.now();
+			command(5);
+		}	
     };
     document.getElementById("restart").onclick = function(event) {
-        if (dlg_dimmer === null)
+        if (dlg_dimmer === null){
+			preloadStartTime = Date.now();
             command(6);
+		}
     };
     undo_button = document.getElementById("undo");
     undo_button.onclick = function(event) {
@@ -2348,9 +2352,35 @@ function copyTempDouble(ptr) {
                   timer_reference_date = now;
                   return true;
               }, 20);
+			  
+			showGameResult();  
           }
       }
 
+ function showGameResult(){
+	alert(timer_reference_date - preloadStartTime);
+	var modal = document.getElementById('myModal');
+	var ms = timer_reference_date - preloadStartTime;
+	var min = Math.floor((ms/1000/60) << 0);
+	var sec = Math.floor((ms/1000) % 60);
+	document.getElementById('timeSummary').innerHTML= min+ "<b>	min </b>"+ sec + "<b> s</b>";
+	//console.log(min + ':' + sec);
+	modal.style.display = "block"; 
+}
+
+function closeModal(){
+	var modal = document.getElementById('myModal');
+	modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+	var modal = document.getElementById('myModal');  
+    modal.style.display = "none";
+  }
+}
+ 
   function _js_canvas_set_size(w, h) {
           onscreen_canvas.width = w;
           offscreen_canvas.width = w;
@@ -6267,6 +6297,9 @@ function copyTempDouble(ptr) {
               clearInterval(timer);
               timer = null;
           }
+		var d = new Date();
+		var n = d.getTime();
+		//alert(n);
       }
 
   function _js_canvas_draw_line(x1, y1, x2, y2, width, colour) {
