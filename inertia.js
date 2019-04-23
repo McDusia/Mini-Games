@@ -13,6 +13,8 @@
  * global variables, and provides the puzzle init function and a
  * couple of other helper functions.
  */
+ 
+ var points = 0;
 
 // To avoid flicker while doing complicated drawing, we use two
 // canvases, the same size. One is actually on the web page, and the
@@ -48,7 +50,9 @@ var midpoint_cache = [];
 var timer = null;
 var timer_reference_date;
 
-// void timer_callback(double tplus);
+ //void timer_callback(double tplus){
+	
+ 
 //
 // Called every 20ms while timing is active.
 var timer_callback;
@@ -309,12 +313,16 @@ function initPuzzle() {
             command(1);
     };*/
     document.getElementById("new").onclick = function(event) {
-        if (dlg_dimmer === null)
-            command(5);
+        if (dlg_dimmer === null){
+			preloadStartTime = Date.now();
+			command(5);
+		}	
     };
     document.getElementById("restart").onclick = function(event) {
-        if (dlg_dimmer === null)
+        if (dlg_dimmer === null){
+			preloadStartTime = Date.now();
             command(6);
+		}	
     };
     undo_button = document.getElementById("undo");
     undo_button.onclick = function(event) {
@@ -2332,8 +2340,15 @@ function copyTempDouble(ptr) {
 
   function _js_canvas_set_statusbar(ptr) {
           var text = Pointer_stringify(ptr);
+		  
+		  if(text == "COMPLETED!"){
+			  //alert("udane");
+			  showGameResult();
+			  
+		  } 
           statusbar.replaceChild(document.createTextNode(text),
                                  statusbar.lastChild);
+		
       }
 
   function _js_canvas_make_statusbar() {
@@ -2362,9 +2377,33 @@ function copyTempDouble(ptr) {
                   timer_reference_date = now;
                   return true;
               }, 20);
-          }
+          //showGameResult();
+		  }
       }
 
+function showGameResult(){
+	//alert(timer_reference_date - preloadStartTime);
+	var modal = document.getElementById('myModal');
+	var ms = timer_reference_date - preloadStartTime;
+	var min = Math.floor((ms/1000/60) << 0);
+	var sec = Math.floor((ms/1000) % 60);
+	document.getElementById('timeSummary').innerHTML= min+ "<b>	min </b>"+ sec + "<b> s</b>";
+	
+	if(ms < 60000){
+		points = points + 1;
+	} else if(ms > 300000){
+	   points = points + 0.1;
+	} else {
+		points = points + (((-0.00000375) * ms) + 0.999775);  
+	}	
+	modal.style.display = "block"; 
+}
+
+function closeModal(){
+	var modal = document.getElementById('myModal');
+	modal.style.display = "none";
+}	  
+	  
   function _js_canvas_set_size(w, h) {
           onscreen_canvas.width = w;
           offscreen_canvas.width = w;
