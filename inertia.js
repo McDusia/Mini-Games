@@ -83,7 +83,7 @@ var dlg_return_sval, dlg_return_ival;
 // the <li> objects inside it. Used by js_add_preset(),
 // js_get_selected_preset() and js_select_preset().
 var gametypelist = null, gametypeitems = [];
-var gametypeselectedindex = null;
+var gametypeselectedindex = 0;//null;
 var gametypesubmenus = [];
 
 // The two anchors used to give permalinks to the current puzzle. Used
@@ -96,6 +96,17 @@ var undo_button, redo_button;
 // A div element enclosing both the puzzle and its status bar, used
 // for positioning the resize handle.
 var resizable_div;
+
+function displayHelpModal(){	
+	var modal = document.getElementById('helpModal');
+	modal.style.display = "block"; 	
+}
+
+
+function closeHelpModal(){
+	var modal = document.getElementById('helpModal');
+	modal.style.display = "none";
+}
 
 // Helper function to find the absolute position of a given DOM
 // element on a page, by iterating upwards through the DOM finding
@@ -372,8 +383,8 @@ function initPuzzle() {
         }
     };*/
 
-    gametypelist = document.getElementById("gametype");
-    gametypesubmenus.push(gametypelist);
+    //gametypelist = document.getElementById("gametype");
+    //gametypesubmenus.push(gametypelist);
 
     // In IE, the canvas doesn't automatically gain focus on a mouse
     // click, so make sure it does
@@ -403,8 +414,8 @@ function initPuzzle() {
     timer_callback = Module.cwrap('timer_callback', 'void', ['number']);
 
     // Save references to the two permalinks.
-    permalink_desc = document.getElementById("permalink-desc");
-    permalink_seed = document.getElementById("permalink-seed");
+    //permalink_desc = document.getElementById("permalink-desc");
+    //permalink_seed = document.getElementById("permalink-seed");
 
     // Default to giving keyboard focus to the puzzle.
     onscreen_canvas.focus();
@@ -1903,7 +1914,7 @@ function copyTempDouble(ptr) {
 
 
   function _js_update_permalinks(desc, seed) {
-          desc = Pointer_stringify(desc);
+         /* desc = Pointer_stringify(desc);
           permalink_desc.href = "#" + desc;
   
           if (seed == 0) {
@@ -1912,7 +1923,7 @@ function copyTempDouble(ptr) {
               seed = Pointer_stringify(seed);
               permalink_seed.href = "#" + seed;
               permalink_seed.style.display = "inline";
-          }
+          }*/
       }
 
    
@@ -1989,8 +2000,8 @@ function copyTempDouble(ptr) {
           tick.style.paddingRight = "0.5em";
           item.appendChild(tick);
           item.appendChild(document.createTextNode(name));
-          gametypesubmenus[menuid].appendChild(item);
-          gametypeitems.push(item);
+          //gametypesubmenus[menuid].appendChild(item);
+          //gametypeitems.push(item);
   
           item.onclick = function(event) {
               if (dlg_dimmer === null) {
@@ -6230,10 +6241,10 @@ function copyTempDouble(ptr) {
           item.appendChild(document.createTextNode(name));
           var submenu = document.createElement("ul");
           item.appendChild(submenu);
-          gametypesubmenus[menuid].appendChild(item);
-          var toret = gametypesubmenus.length;
-          gametypesubmenus.push(submenu);
-          return toret;
+          //gametypesubmenus[menuid].appendChild(item);
+          //var toret = gametypesubmenus.length;
+          //gametypesubmenus.push(submenu);
+          return 0;//toret;
       }
 
   function _time(ptr) {

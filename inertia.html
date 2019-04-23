@@ -228,7 +228,7 @@ table {
   <div class="modal-content">
     <span id="closeButtonInModal" onclick="closeHelpModal()">&times;</span>
 	<p><b>Pomoc</b><p>
-	<p>Rozbij przy każdym drzewie namiot. Pamiętaj aby ilość namiotów w wierszu i w kolumnie była zgodna z liczbą zapisaną przy wierszu/kolumnie. Namioty nie mogą się stykać ani bokami ani rogami.</p>
+	<p>Celem gry jest zdobycie wszystkich diamentów, ale jednocześnie nie wpadnięcie na bombę. Można się poruszać w lewo, prawo, w górę, w dół i po skosie. Na miejscach oznaczonych kółkiem i na ścianach piłka się zatrzymuje.</p>
   </div>
 </div>
 
@@ -241,17 +241,14 @@ table {
 <td id="restart"><img src="img/reload.png" alt="Restart">Od początku</td>
 <td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij</td>
 <td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
-<td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
+<td id="solve"><img src="img/lighting.png" alt="Solve">Podpowiedź</td>
 <td id="help"><img src="img/help.png" alt="Solve" onclick="displayHelpModal()">Pomoc</td>
 </tr>
 </tbody>
 </table>
 
-
 <div id="puzzle" style="display: none">
-<div id="gamemenu"><li>Type...<ul id="gametype"></ul></li
-><li class="separator"></li
-></ul></div>
+
 <div align=center>
   <div id="resizable" style="position:relative; left:0; top:0">
   <canvas style="display: block" id="puzzlecanvas" width="1px" height="1px" tabindex="1">
@@ -259,11 +256,7 @@ table {
   <div id="statusbarholder" style="display: block">
   </div>
   </div>
-  <p>
-    Link to this puzzle:
-    <a id="permalink-desc">by game ID</a>
-    <a id="permalink-seed">by random seed</a>
-  </p>
+  
 </div>
 </div>
 <div id="apology">
