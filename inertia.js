@@ -1,4 +1,4 @@
-/*
+    /*
  * emccpre.js: one of the Javascript components of an Emscripten-based
  * web/Javascript front end for Puzzles.
  *
@@ -2355,15 +2355,20 @@ function copyTempDouble(ptr) {
           var statusholder = document.getElementById("statusbarholder");
           statusbar = document.createElement("div");
           statusbar.style.overflow = "hidden";
-          statusbar.style.width = (onscreen_canvas.width - 4) + "px";
+          //statusbar.style.width = (onscreen_canvas.width - 4) + "px";
           statusholder.style.width = onscreen_canvas.width + "px";
-          statusbar.style.height = "1.2em";
+          //statusbar.style.height = "1.2em";
           statusbar.style.textAlign = "left";
-          statusbar.style.background = "#d8d8d8";
-          statusbar.style.borderLeft = '2px solid #c8c8c8';
-          statusbar.style.borderTop = '2px solid #c8c8c8';
-          statusbar.style.borderRight = '2px solid #e8e8e8';
-          statusbar.style.borderBottom = '2px solid #e8e8e8';
+          statusbar.style.background = 'brown';
+          statusbar.style.borderLeft = '2px solid brown';
+          statusbar.style.borderTop = '2px solid brown';
+          statusbar.style.borderRight = '2px solid brown';
+          statusbar.style.borderBottom = '2px solid brown';
+          statusbar.style.color = 'white';
+          statusbar.style.fontFamily ="'Dekko', cursive";
+          statusbar.style.paddingLeft = '10px';
+          statusbar.style.fontSize = '1em';
+      statusbar.style.boxSizing = 'border-box';
           statusbar.appendChild(document.createTextNode(" "));
           statusholder.appendChild(statusbar);
       }
