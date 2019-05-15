@@ -236,6 +236,7 @@ function initPuzzle() {
         global_width = 8;
         global_height = 8;
     }*/
+	
     // Construct the off-screen canvas used for double buffering.
     onscreen_canvas = document.getElementById("puzzlecanvas");
     offscreen_canvas = document.createElement("canvas");
@@ -541,7 +542,7 @@ function initPuzzle() {
     // show the div containing the actual puzzle.
     document.getElementById("apology").style.display = "none";
     document.getElementById("puzzle").style.display = "inline";
-    changeSize(global_width, global_height);
+    //changeSize(global_width, global_height);
 }
 
 // The Module object: Our interface to the outside world. We import
