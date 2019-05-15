@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Namioty</title>
+<script type="text/javascript" src="tents.js"></script>
+<style class="text/css">
+
+table {
+	text-align: center;
+}
+
+table td {
+	width: 45px;
+}
+
+td img {
+	height: 45px;
+}
+
+table td { 
+	font-size: 12px;
+}
+
+
+table td:hover{
+	background-color: rgb(179, 179, 179);
+}
+
+table {
+	align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+  max-width: 500px;
+}
+
+/* The Close Button */
+#closeButtonInModal {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#closeButtonInModal:hover,
+#closeButtonInModal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body onLoad="initPuzzle();">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="closeButtonInModal" onclick="closeModal()">&times;</span>
+	<p>Brawo!<p>
+	<img src="img/emoi.png" alt="happy">
+	<p>Czas:</p>
+	<p id="timeSummary"></p>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="helpModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="closeButtonInModal" onclick="closeHelpModal()">&times;</span>
+	<p><b>Pomoc</b><p>
+	<p>Rozbij przy każdym drzewie namiot. Pamiętaj aby ilość namiotów w wierszu i w kolumnie była zgodna z liczbą zapisaną przy wierszu/kolumnie. Namioty nie mogą się stykać ani bokami ani rogami.</p>
+  </div>
+</div>
+
+<h1 align=center>Namioty</h1>
+
+
+<div id="puzzle" style="display: none">
+
+<table>
+<tbody>
+<tr>
+<td id="new"><img src="img/alpha.png" alt="New game">Nowa gra</td>
+<td id="restart"><img src="img/reload.png" alt="Restart">Od początku</td>
+<td id="undo"><img src="img/arrow_left.png" alt="Previous">Cofnij</td>
+<td id="redo"><img src="img/arrow_right.png" alt="Next">Przywróć</td>
+<td id="solve"><img src="img/lighting.png" alt="Solve">Rozwiązanie</td>
+<td id="help"><img src="img/help.png" alt="Solve" onclick="displayHelpModal()">Pomoc</td>
+</tr>
+</tbody>
+</table>
+
+
+<div align=center>
+  <div id="resizable" style="position:relative; left:0; top:0">
+  <canvas style="display: block" id="puzzlecanvas" width="1px" height="1px" tabindex="1">
+  </canvas>
+  <div id="statusbarholder" style="display: block">
+  </div>
+  </div>
+  
+</div>
+</div>
+<div id="apology">
+Sorry, this Javascript puzzle doesn't seem to work in your web
+browser. Perhaps you have Javascript disabled, or perhaps your browser
+doesn't provide a feature that the puzzle code requires (such as
+<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Typed_arrays">typed arrays</a>).
+These puzzles have been successfully run in Firefox 19, Chrome 26,
+Internet Explorer 10 and Safari 6.
+</div>
+
+
+</body>
+</html>
